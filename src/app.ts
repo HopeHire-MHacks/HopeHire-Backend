@@ -28,6 +28,11 @@ import BookmarkRouter from './routes/BookmarkRoutes';
 import ExperienceRepository from './repositories/ExperienceRepository';
 import ExperienceService from './services/ExperienceService';
 
+import ApplicationRepository from './repositories/ApplicationRepository';
+import ApplicationService from './services/ApplicationService';
+import ApplicationController from './controllers/ApplicationController';
+import ApplicationRouter from './routes/ApplicationRoutes';
+
 import AuthenticationController from './controllers/AuthenticationController';
 import AuthenticationRoutes from './routes/AuthenticationRoutes';
 import AuthenticationMiddleware from './middlewares/authentication';
@@ -79,6 +84,8 @@ export default class App {
     this.app.use('/employees', EmployeeRouter());
     this.app.use('/jobs', JobRouter());
     this.app.use('/bookmarks', BookmarkRouter());
+    this.app.use('/applications', ApplicationRouter());
+
     this.app.use('/', AuthenticationRoutes());
   }
 
@@ -93,6 +100,7 @@ export default class App {
     container.register('JobRepository', JobRepository, ['db']);
     container.register('BookmarkRepository', BookmarkRepository, ['db']);
     container.register('ExperienceRepository', ExperienceRepository, ['db']);
+    container.register('ApplicationRepository', ApplicationRepository, ['db']);
 
     // Services
     container.register('UserService', UserService, ['UserRepository']);
@@ -108,6 +116,9 @@ export default class App {
     ]);
     container.register('ExperienceService', ExperienceService, [
       'ExperienceRepository',
+    ]);
+    container.register('ApplicationService', ApplicationService, [
+      'ApplicationRepository',
     ]);
 
     // Controllers
@@ -129,6 +140,9 @@ export default class App {
     ]);
     container.register('BookmarkController', BookmarkController, [
       'BookmarkService',
+    ]);
+    container.register('ApplicationController', ApplicationController, [
+      'ApplicationService',
     ]);
 
     // Middlewares

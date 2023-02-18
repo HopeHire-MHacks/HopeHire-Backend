@@ -32,6 +32,12 @@ export default {
     updateBookmark: 'Successfully updated Bookmark.',
     deleteBookmark: 'Successfully deleted Bookmark(s).',
 
+    getOneApplication: 'Successfully retrieved Application.',
+    getAllApplications: 'Successfully retrieved Applications.',
+    createApplication: 'Successfully created Application(s).',
+    updateApplication: 'Successfully updated Application.',
+    deleteApplication: 'Successfully deleted Application(s).',
+
     signIn: 'Successfully signed in.',
     setPassword: 'Successfully set password',
     resetPassword: 'Successfully reset password.',
@@ -72,6 +78,13 @@ export default {
     updateBookmark: 'Error in updating Bookmark.',
     deleteBookmark: 'Error in deleting Bookmark(s).',
     bookmarkNotExist: 'Bookmark does not exist.',
+
+    getOneApplication: 'Error in retrieving Application.',
+    getAllApplications: 'Error in retrieving Applications.',
+    createApplication: 'Error in creating Application(s).',
+    updateApplication: 'Error in updating Application.',
+    deleteApplication: 'Error in deleting Application(s).',
+    applicationNotExist: 'Application does not exist.',
 
     emailExists: 'Email already exists.',
     noAuthToken: 'Authorization token not found',
