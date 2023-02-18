@@ -26,6 +26,12 @@ export default {
     updateJob: 'Successfully updated Job.',
     deleteJob: 'Successfully deleted Job(s).',
 
+    getOneBookmark: 'Successfully retrieved Bookmark.',
+    getAllBookmarks: 'Successfully retrieved Bookmarks.',
+    createBookmark: 'Successfully created Bookmark(s).',
+    updateBookmark: 'Successfully updated Bookmark.',
+    deleteBookmark: 'Successfully deleted Bookmark(s).',
+
     signIn: 'Successfully signed in.',
     setPassword: 'Successfully set password',
     resetPassword: 'Successfully reset password.',
@@ -59,6 +65,13 @@ export default {
     updateJob: 'Error in updating Job.',
     deleteJob: 'Error in deleting Job(s).',
     jobNotExist: 'Job does not exist.',
+
+    getOneBookmark: 'Error in retrieving Bookmark.',
+    getAllBookmarks: 'Error in retrieving Bookmarks.',
+    createBookmark: 'Error in creating Bookmark(s).',
+    updateBookmark: 'Error in updating Bookmark.',
+    deleteBookmark: 'Error in deleting Bookmark(s).',
+    bookmarkNotExist: 'Bookmark does not exist.',
 
     emailExists: 'Email already exists.',
     noAuthToken: 'Authorization token not found',
