@@ -1,4 +1,4 @@
-# Application Backend
+# HopeHire Backend
 
 _Application Description_
 
