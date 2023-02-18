@@ -69,6 +69,10 @@ export default class EmployerController {
 
   async createOneEmployer(req: Request, res: Response, next: NextFunction) {
     try {
+      if (req.body.logo !== null) {
+        req.body.logo = Buffer.from(req.body.logo.data);
+      }
+
       const toCreate: EmployerCreationAttributes = {
         userId: req.user.id,
         ...req.body,

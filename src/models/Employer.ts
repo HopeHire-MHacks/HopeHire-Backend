@@ -6,7 +6,7 @@ export interface EmployerAttributes {
   id: number;
   name: string;
   companyDescription: string;
-  logo: Blob;
+  logo: Buffer;
   address: string;
   userId: number;
   numberOfEmployees: number;
@@ -27,7 +27,7 @@ class Employer extends Model {
   public id!: number;
   public name!: string;
   public companyDescription!: string;
-  public logo!: Blob;
+  public logo!: Buffer;
   public address!: string;
   public userId!: number;
   public numberOfEmployees!: number;
