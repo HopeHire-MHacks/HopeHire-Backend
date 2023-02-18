@@ -25,6 +25,9 @@ import BookmarkService from './services/BookmarkService';
 import BookmarkController from './controllers/BookmarkController';
 import BookmarkRouter from './routes/BookmarkRoutes';
 
+import ExperienceRepository from './repositories/ExperienceRepository';
+import ExperienceService from './services/ExperienceService';
+
 import AuthenticationController from './controllers/AuthenticationController';
 import AuthenticationRoutes from './routes/AuthenticationRoutes';
 import AuthenticationMiddleware from './middlewares/authentication';
@@ -89,6 +92,7 @@ export default class App {
     container.register('EmployeeRepository', EmployeeRepository, ['db']);
     container.register('JobRepository', JobRepository, ['db']);
     container.register('BookmarkRepository', BookmarkRepository, ['db']);
+    container.register('ExperienceRepository', ExperienceRepository, ['db']);
 
     // Services
     container.register('UserService', UserService, ['UserRepository']);
@@ -101,6 +105,9 @@ export default class App {
     container.register('JobService', JobService, ['JobRepository']);
     container.register('BookmarkService', BookmarkService, [
       'BookmarkRepository',
+    ]);
+    container.register('ExperienceService', ExperienceService, [
+      'ExperienceRepository',
     ]);
 
     // Controllers
