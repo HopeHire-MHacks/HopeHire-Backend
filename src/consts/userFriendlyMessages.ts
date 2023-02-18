@@ -44,6 +44,10 @@ export default {
     updateInteraction: 'Successfully updated Interaction.',
     deleteInteraction: 'Successfully deleted Interaction(s).',
 
+    getApplicationsByEmployeeId: 'Successfully retrieved Applications.',
+    getApplicationsByJobId: 'Successfully retrieved Applications.',
+    getJobsByEmployerId: 'Successfully retrieved Jobs.',
+
     signIn: 'Successfully signed in.',
     setPassword: 'Successfully set password',
     resetPassword: 'Successfully reset password.',
@@ -63,12 +67,13 @@ export default {
     deleteEmployer: 'Error in deleting Employer(s).',
     employerNotExist: 'Employer does not exist.',
 
-    getOneEmployee: 'Successfully retrieved Employee.',
-    getMultipleEmployees: 'Successfully retrieved Employee(s).',
-    getAllEmployees: 'Successfully retrieved Employees.',
-    createEmployee: 'Successfully created Employee(s).',
-    updateEmployee: 'Successfully updated Employee.',
-    deleteEmployee: 'Successfully deleted Employee(s).',
+    getOneEmployee: 'Error in retrieving Employee.',
+    getMultipleEmployees: 'Error in retrieving Employee(s).',
+    getAllEmployees: 'Error in retrieving Employees.',
+    createEmployee: 'Error in creating Employee(s).',
+    updateEmployee: 'Error in updating Employee.',
+    deleteEmployee: 'Error in deleting Employee(s).',
+    employeeNotExist: 'Employee does not exist.',
 
     getOneJob: 'Error in retrieving Job.',
     getMultipleJobs: 'Error in retrieve Job(s).',
@@ -99,6 +104,10 @@ export default {
     deleteInteraction: 'Error in deleting Interaction(s).',
     interactionNotExist: 'Interaction does not exist.',
 
+    getApplicationsByEmployeeId: 'Error in retrieving Applications.',
+    getApplicationsByJobId: 'Error in retrieving Applications.',
+    getJobsByEmployerId: 'Error in retrieving Jobs.',
+
     emailExists: 'Email already exists.',
     noAuthToken: 'Authorization token not found',
     malformedToken: 'Malformed token',
@@ -113,6 +122,7 @@ export default {
     resetPassword: 'Error in resetting password.',
     signUpAttributes: 'Error in getting sign up attributes.',
     samePasswordError: 'New password and old password cannot be the same',
+    multipleRoleCreation: 'Cannot create multiple roles for the same user',
 
     invalidPassword:
       'Password must at least be 6 characters long with at least 1 special character (@ $ ! % * # ? &).',

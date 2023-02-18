@@ -135,10 +135,12 @@ export default class App {
     container.register('EmployerController', EmployerController, [
       'EmployerService',
       'JobService',
+      'UserService',
     ]);
     container.register('EmployeeController', EmployeeController, [
       'EmployeeService',
       'ApplicationService',
+      'UserService',
     ]);
     container.register('JobController', JobController, [
       'JobService',

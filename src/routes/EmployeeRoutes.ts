@@ -46,9 +46,21 @@ export default () => {
   );
 
   employeeRouter.get(
+    '/:id/applications',
+    [auth],
+    employeeController.getApplicationsByEmployeeId.bind(employeeController)
+  );
+
+  employeeRouter.get(
     '/mass/ids',
     [auth],
     employeeController.getMultipleEmployeeById.bind(employeeController)
+  );
+
+  employeeRouter.get(
+    '/recommended/employers',
+    [auth],
+    employeeController.getAllEmployeesRecommended.bind(employeeController)
   );
 
   return employeeRouter;

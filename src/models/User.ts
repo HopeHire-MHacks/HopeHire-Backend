@@ -33,6 +33,12 @@ export class InvalidUserPasswordError extends Error {
   }
 }
 
+export class MultipleRoleCreationError extends Error {
+  constructor() {
+    super(userFriendlyMessages.failure.multipleRoleCreation);
+  }
+}
+
 class User
   extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes
