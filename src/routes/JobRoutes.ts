@@ -20,6 +20,12 @@ export default () => {
   jobRouter.post('/', [auth], jobController.createOneJob.bind(jobController));
 
   jobRouter.get(
+    '/:id/applications',
+    [auth],
+    jobController.getApplicationsByJobId.bind(jobController)
+  );
+
+  jobRouter.get(
     '/:id',
     [auth],
     jobController.getOneJobById.bind(jobController)
@@ -44,7 +50,7 @@ export default () => {
   );
 
   jobRouter.get(
-    '/recommended/employees', 
+    '/recommended/employees',
     [auth],
     jobController.getAllJobsRecommended.bind(jobController)
   );

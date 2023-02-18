@@ -4,12 +4,15 @@ import JobService from '../services/JobService';
 import {JobAttributes, JobCreationAttributes} from '../models/Job';
 import enviroment from '../consts/enviroment';
 import axios from 'axios';
+import ApplicationService from '../services/ApplicationService';
 
 export default class JobController {
   private jobService: JobService;
+  private applicationService: ApplicationService;
 
-  constructor(jobService: JobService) {
+  constructor(jobService: JobService, applicationService: ApplicationService) {
     this.jobService = jobService;
+    this.applicationService = applicationService;
   }
 
   async getAllJobs(req: Request, res: Response, next: NextFunction) {
@@ -28,21 +31,22 @@ export default class JobController {
 
   async getAllJobsRecommended(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log(enviroment.recommendationAPI + "/patients/" + req.body.employee_id)
-      const response = await axios.get(
-        "http://localhost:5000/patients/" + req.body.employee_id
+      console.log(
+        enviroment.recommendationAPI + '/patients/' + req.body.employee_id
       );
-      const job_ids: any = response.data['listing_ids']
-      console.log(job_ids)
-        
-      const jobs = (this.jobService.getMultipleJobsByIdWithEmployer(job_ids));
+      const response = await axios.get(
+        'http://localhost:5000/patients/' + req.body.employee_id
+      );
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const job_ids: any = response.data['listing_ids'];
+
+      const jobs = this.jobService.getMultipleJobsByIdWithEmployer(job_ids);
       jobs.then(data => {
         res.json({
           message: userFriendlyMessage.success.getAllJobs,
           data: data,
         });
-      })
-      
+      });
     } catch (e) {
       res.status(400);
       res.json({message: userFriendlyMessage.failure.getAllJobs});
@@ -118,6 +122,27 @@ export default class JobController {
     } catch (e) {
       res.status(400);
       res.json({message: userFriendlyMessage.failure.updateJob});
+      next(e);
+    }
+  }
+
+  async getApplicationsByJobId(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const jobId = parseInt(req.params.id);
+      const applications = await this.applicationService.getApplicationsByJobId(
+        jobId
+      );
+      res.json({
+        message: userFriendlyMessage.success.getApplicationsByJobId,
+        data: applications,
+      });
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getApplicationsByJobId});
       next(e);
     }
   }
