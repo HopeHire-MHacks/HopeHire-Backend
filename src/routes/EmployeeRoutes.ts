@@ -47,6 +47,7 @@ export default () => {
 
   employeeRouter.get(
     '/mass/ids',
+    [auth],
     employeeController.getMultipleEmployeeById.bind(employeeController)
   );
 

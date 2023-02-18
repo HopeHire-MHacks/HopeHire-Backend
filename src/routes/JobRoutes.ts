@@ -39,7 +39,14 @@ export default () => {
 
   jobRouter.get(
     '/mass/ids',
+    [auth],
     jobController.getMultipleJobById.bind(jobController)
+  );
+
+  jobRouter.get(
+    '/recommended/employees', 
+    [auth],
+    jobController.getAllJobsRecommended.bind(jobController)
   );
 
   return jobRouter;

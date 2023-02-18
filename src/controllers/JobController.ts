@@ -2,6 +2,8 @@ import {NextFunction, Request, Response} from 'express';
 import userFriendlyMessage from '../consts/userFriendlyMessages';
 import JobService from '../services/JobService';
 import {JobAttributes, JobCreationAttributes} from '../models/Job';
+import enviroment from '../consts/enviroment';
+import axios from 'axios';
 
 export default class JobController {
   private jobService: JobService;
@@ -17,6 +19,30 @@ export default class JobController {
         message: userFriendlyMessage.success.getAllJobs,
         data: jobs,
       });
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getAllJobs});
+      next(e);
+    }
+  }
+
+  async getAllJobsRecommended(req: Request, res: Response, next: NextFunction) {
+    try {
+      console.log(enviroment.recommendationAPI + "/patients/" + req.body.employee_id)
+      const response = await axios.get(
+        "http://localhost:5000/patients/" + req.body.employee_id
+      );
+      const job_ids: any = response.data['listing_ids']
+      console.log(job_ids)
+        
+      const jobs = (this.jobService.getMultipleJobsByIdWithEmployer(job_ids));
+      jobs.then(data => {
+        res.json({
+          message: userFriendlyMessage.success.getAllJobs,
+          data: data,
+        });
+      })
+      
     } catch (e) {
       res.status(400);
       res.json({message: userFriendlyMessage.failure.getAllJobs});
