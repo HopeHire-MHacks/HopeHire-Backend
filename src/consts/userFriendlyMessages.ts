@@ -7,6 +7,13 @@ export default {
     updateUser: 'Successfully updated User.',
     deleteUser: 'Successfully deleted User(s).',
 
+    getOneEmployer: 'Successfully retrieved Employer.',
+    getAllEmployers: 'Successfully retrieved Employers.',
+    createEmployer:
+      "Successfully created Employer(s). Please check your email's inbox (and junk folder) for a confirmation link before signing in.",
+    updateEmployer: 'Successfully updated Employer.',
+    deleteEmployer: 'Successfully deleted Employer(s).',
+
     signIn: 'Successfully signed in.',
     setPassword: 'Successfully set password',
     resetPassword: 'Successfully reset password.',
@@ -18,6 +25,13 @@ export default {
     updateUser: 'Error in updating User.',
     deleteUser: 'Error in deleting User(s).',
     userNotExist: 'User does not exist.',
+
+    getOneEmployer: 'Error in retrieving Employer.',
+    getAllEmployers: 'Error in retrieving Employers.',
+    createEmployer: 'Error in creating Employer(s).',
+    updateEmployer: 'Error in updating Employer.',
+    deleteEmployer: 'Error in deleting Employer(s).',
+    employerNotExist: 'Employer does not exist.',
 
     emailExists: 'Email already exists.',
     noAuthToken: 'Authorization token not found',

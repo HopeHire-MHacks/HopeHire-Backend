@@ -1,6 +1,17 @@
-import {Model, DataTypes, Sequelize} from 'sequelize';
+import {Model, DataTypes, Sequelize, Optional} from 'sequelize';
 import User from './User';
 import {Models} from '../types';
+
+export interface EmployerAttributes {
+  id: number;
+  name: string;
+  companyDescription: string;
+  logo: Blob;
+  address: string;
+  userId: number;
+}
+
+export type EmployerCreationAttributes = Optional<EmployerAttributes, 'id'>;
 
 class Employer extends Model {
   public id!: number;

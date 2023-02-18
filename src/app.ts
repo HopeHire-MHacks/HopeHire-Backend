@@ -5,6 +5,11 @@ import UserRepository from './repositories/UserRepository';
 import UserRouter from './routes/UserRoutes';
 import UserService from './services/UserService';
 
+import EmployerRepository from './repositories/EmployerRepository';
+import EmployerService from './services/EmployerService';
+import EmployerController from './controllers/EmployerController';
+import EmployerRouter from './routes/EmployerRoutes';
+
 import sequelize from './db';
 import models from './models';
 
@@ -48,6 +53,7 @@ export default class App {
 
   public initControllers() {
     this.app.use('/users', UserRouter());
+    this.app.use('/employers', EmployerRouter());
   }
 
   public async initContainer() {
@@ -56,12 +62,19 @@ export default class App {
 
     // Repositories
     container.register('UserRepository', UserRepository, ['db']);
+    container.register('EmployerRepository', EmployerRepository, ['db']);
 
     // Services
     container.register('UserService', UserService, ['UserRepository']);
+    container.register('EmployerService', EmployerService, [
+      'EmployerRepository',
+    ]);
 
     // Controllers
     container.register('UserController', UserController, ['UserService']);
+    container.register('EmployerController', EmployerController, [
+      'EmployerService',
+    ]);
 
     // Middlewares
     // insert middlewares here
