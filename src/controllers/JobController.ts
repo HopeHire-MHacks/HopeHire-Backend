@@ -59,6 +59,7 @@ export default class JobController {
   async createOneJob(req: Request, res: Response, next: NextFunction) {
     try {
       const toCreate: JobCreationAttributes = {
+        employerId: req.user.employer!.id,
         ...req.body,
       };
       const createdJob = await this.jobService.createOneJob(toCreate);

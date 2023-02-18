@@ -11,7 +11,7 @@ export interface ApplicationAttributes {
 
 export type ApplicationCreationAttributes = Optional<
   ApplicationAttributes,
-  'id'
+  'id' | 'employeeId'
 >;
 
 class Application extends Model {

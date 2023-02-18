@@ -3,6 +3,8 @@ import bcrypt from 'bcrypt';
 import enviroment from '../consts/enviroment';
 import userFriendlyMessages from '../consts/userFriendlyMessages';
 import {Models} from '../types';
+import Employer from './Employer';
+import Employee from './Employee';
 
 // These are all the attributes in the User model
 export interface UserAttributes {
@@ -38,6 +40,9 @@ class User
   public id!: number; // Note that the `null assertion` `!` is required in strict mode.
   public email!: string;
   public password!: string;
+
+  public employer?: Employer;
+  public employee?: Employee;
 
   // timestamps!
   public readonly createdAt!: Date;

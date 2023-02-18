@@ -28,7 +28,10 @@ export interface JobAttributes {
   address: string;
 }
 
-export type JobCreationAttributes = Optional<JobAttributes, 'id'>;
+export type JobCreationAttributes = Optional<
+  JobAttributes,
+  'id' | 'employerId'
+>;
 
 class Job extends Model {
   public id!: number;

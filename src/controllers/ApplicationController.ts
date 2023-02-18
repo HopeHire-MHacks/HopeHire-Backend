@@ -46,6 +46,7 @@ export default class ApplicationController {
   async createOneApplication(req: Request, res: Response, next: NextFunction) {
     try {
       const toCreate: ApplicationCreationAttributes = {
+        employeeId: req.user.employee!.id,
         ...req.body,
       };
       const createdApplication =

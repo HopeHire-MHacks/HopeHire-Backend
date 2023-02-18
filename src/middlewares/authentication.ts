@@ -32,7 +32,7 @@ export default class AuthenticationMiddleware {
       }
 
       const payload = JwtUtils.getPayload(authToken) as Payload;
-      const user = await this.userService.getOneUserById(
+      let user = await this.userService.getOneUserById(
         payload.id,
         showPassword
       );
@@ -44,6 +44,7 @@ export default class AuthenticationMiddleware {
 
       const secret = changePassword ? user.password : undefined;
       JwtUtils.verifyAccessToken(authToken, secret);
+      user = await this.userService.getActableById(user.id);
       req.user = user;
       return next();
     } catch (e: unknown) {
