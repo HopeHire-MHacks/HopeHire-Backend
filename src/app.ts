@@ -20,6 +20,10 @@ import JobService from './services/JobService';
 import JobController from './controllers/JobController';
 import JobRouter from './routes/JobRoutes';
 
+import AuthenticationController from './controllers/AuthenticationController';
+import AuthenticationRoutes from './routes/AuthenticationRoutes';
+import AuthenticationMiddleware from './middlewares/authentication';
+
 import sequelize from './db';
 import models from './models';
 
@@ -66,6 +70,7 @@ export default class App {
     this.app.use('/employers', EmployerRouter());
     this.app.use('/employees', EmployeeRouter());
     this.app.use('/jobs', JobRouter());
+    this.app.use('/auth', AuthenticationRoutes());
   }
 
   public async initContainer() {
@@ -102,9 +107,14 @@ export default class App {
       'JobService',
       'ApplicationService',
     ]);
+    container.register('AuthenticationController', AuthenticationController, [
+      'UserService',
+    ]);
 
     // Middlewares
-    // insert middlewares here
+    container.register('AuthenticationMiddleware', AuthenticationMiddleware, [
+      'UserService',
+    ]);
   }
 
   public listen(port: string) {
