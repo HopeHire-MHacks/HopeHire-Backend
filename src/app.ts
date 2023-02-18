@@ -10,6 +10,16 @@ import EmployerService from './services/EmployerService';
 import EmployerController from './controllers/EmployerController';
 import EmployerRouter from './routes/EmployerRoutes';
 
+import EmployeeRepository from './repositories/EmployeeRepository';
+import EmployeeService from './services/EmployeeService';
+import EmployeeController from './controllers/EmployeeController';
+import EmployeeRouter from './routes/EmployeeRoutes';
+
+import JobRepository from './repositories/JobRepository';
+import JobService from './services/JobService';
+import JobController from './controllers/JobController';
+import JobRouter from './routes/JobRoutes';
+
 import sequelize from './db';
 import models from './models';
 
@@ -54,6 +64,8 @@ export default class App {
   public initControllers() {
     this.app.use('/users', UserRouter());
     this.app.use('/employers', EmployerRouter());
+    this.app.use('/employees', EmployeeRouter());
+    this.app.use('/jobs', JobRouter());
   }
 
   public async initContainer() {
@@ -63,17 +75,32 @@ export default class App {
     // Repositories
     container.register('UserRepository', UserRepository, ['db']);
     container.register('EmployerRepository', EmployerRepository, ['db']);
+    container.register('EmployeeRepository', EmployeeRepository, ['db']);
+    container.register('JobRepository', JobRepository, ['db']);
 
     // Services
     container.register('UserService', UserService, ['UserRepository']);
     container.register('EmployerService', EmployerService, [
       'EmployerRepository',
     ]);
+    container.register('EmployeeService', EmployeeService, [
+      'EmployeeRepository',
+    ]);
+    container.register('JobService', JobService, ['JobRepository']);
 
     // Controllers
     container.register('UserController', UserController, ['UserService']);
     container.register('EmployerController', EmployerController, [
       'EmployerService',
+      'JobService',
+    ]);
+    container.register('EmployeeController', EmployeeController, [
+      'EmployeeService',
+      'ApplicationService',
+    ]);
+    container.register('JobController', JobController, [
+      'JobService',
+      'ApplicationService',
     ]);
 
     // Middlewares

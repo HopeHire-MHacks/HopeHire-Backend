@@ -19,6 +19,13 @@ export default {
     updateEmployee: 'Successfully updated Employee.',
     deleteEmployee: 'Successfully deleted Employee(s).',
 
+    getOneJob: 'Successfully retrieved Job.',
+    getMultipleJobs: 'Successfully retrieved Job(s).',
+    getAllJobs: 'Successfully retrieved Jobs.',
+    createJob: 'Successfully created Job(s).',
+    updateJob: 'Successfully updated Job.',
+    deleteJob: 'Successfully deleted Job(s).',
+
     signIn: 'Successfully signed in.',
     setPassword: 'Successfully set password',
     resetPassword: 'Successfully reset password.',
@@ -44,6 +51,14 @@ export default {
     createEmployee: 'Successfully created Employee(s).',
     updateEmployee: 'Successfully updated Employee.',
     deleteEmployee: 'Successfully deleted Employee(s).',
+
+    getOneJob: 'Error in retrieving Job.',
+    getMultipleJobs: 'Error in retrieve Job(s).',
+    getAllJobs: 'Error in retrieving Jobs.',
+    createJob: 'Error in creating Job(s).',
+    updateJob: 'Error in updating Job.',
+    deleteJob: 'Error in deleting Job(s).',
+    jobNotExist: 'Job does not exist.',
 
     emailExists: 'Email already exists.',
     noAuthToken: 'Authorization token not found',

@@ -78,7 +78,9 @@ class Employer extends Model {
   public static associate(models: Models) {
     Employer.belongsTo(models.User, {
       foreignKey: 'userId',
-      as: 'user',
+    });
+    Employer.hasMany(models.Job, {
+      foreignKey: 'employerId',
     });
   }
 }

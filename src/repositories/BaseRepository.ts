@@ -1,10 +1,16 @@
 import {Transaction} from 'sequelize/types';
 import {ModelStatic, ModelAttributes} from '../types';
 
-interface Filter {
+export interface Filter {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
+
+export interface Join {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  include: any;
+}
+
 export interface TransactionOptions {
   transaction: Transaction;
 }
@@ -26,6 +32,18 @@ export default class BaseRepository {
 
   async getWithFilters(filter: Filter, options?: TransactionOptions) {
     return this.model.findAll({where: filter, ...options});
+  }
+
+  async getJoinWithFilter(
+    filter: Filter,
+    join: Join,
+    options?: TransactionOptions
+  ) {
+    return this.model.findAll({
+      where: filter,
+      include: join.include,
+      ...options,
+    });
   }
 
   async getScopeWithFilters(filter: Filter, scope: string) {
