@@ -5,11 +5,20 @@ import {
   EmployeeAttributes,
   EmployeeCreationAttributes,
 } from '../models/Employee';
+import enviroment from '../consts/enviroment';
+import axios from 'axios';
+import ApplicationService from '../services/ApplicationService';
 
 export default class EmployeeController {
   private employeeService: EmployeeService;
-  constructor(employeeService: EmployeeService) {
+  private applicationService: ApplicationService;
+
+  constructor(
+    employeeService: EmployeeService,
+    applicationService: ApplicationService
+  ) {
     this.employeeService = employeeService;
+    this.applicationService = applicationService;
   }
   async getAllEmployees(req: Request, res: Response, next: NextFunction) {
     try {
@@ -36,6 +45,33 @@ export default class EmployeeController {
     } catch (e) {
       res.status(400);
       res.json({message: userFriendlyMessage.failure.getOneEmployee});
+      next(e);
+    }
+  }
+
+  async getAllEmployeesRecommended(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const response = await axios.get(
+        enviroment.recommendationAPI + '/employers/' + req.body.employer_id
+      );
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const employee_ids: any = response.data['patient_ids'];
+
+      const employees =
+        this.employeeService.getMultipleEmployeeById(employee_ids);
+      employees.then(data => {
+        res.json({
+          message: userFriendlyMessage.success.getAllJobs,
+          data: data,
+        });
+      });
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getAllJobs});
       next(e);
     }
   }
@@ -104,6 +140,28 @@ export default class EmployeeController {
     } catch (e) {
       res.status(400);
       res.json({message: userFriendlyMessage.failure.updateEmployee});
+      next(e);
+    }
+  }
+
+  async getApplicationsByEmployeeId(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const employeeId = parseInt(req.params.id);
+      const applications =
+        await this.applicationService.getApplicationsByEmployeeId(employeeId);
+      res.json({
+        message: userFriendlyMessage.success.getApplicationsByEmployeeId,
+        data: applications,
+      });
+    } catch (e) {
+      res.status(400);
+      res.json({
+        message: userFriendlyMessage.failure.getApplicationsByEmployeeId,
+      });
       next(e);
     }
   }

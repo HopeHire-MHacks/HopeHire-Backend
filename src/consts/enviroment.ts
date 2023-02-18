@@ -3,4 +3,5 @@ export default {
   saltRounds: parseInt(process.env.SALT_ROUNDS as string) as number,
   jwtAccessTokenSecret: process.env.JWT_SECRET as string,
   frontendUrl: process.env.FRONTEND_BASEURL as string,
+  recommendationAPI: process.env.RECOMMENDATION_API as string,
 };
