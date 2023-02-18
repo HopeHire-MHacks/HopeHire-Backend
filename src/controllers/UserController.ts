@@ -7,16 +7,17 @@ export default class UserController {
   constructor(userService: UserService) {
     this.userService = userService;
   }
-  // async getSelf(req: Request, res: Response, next: NextFunction) {
-  //   try {
-  //     // const {user} = req;
-  //     res.json({message: userFriendlyMessage.success.getOneUser, data: user});
-  //   } catch (e) {
-  //     res.status(400);
-  //     res.json({message: userFriendlyMessage.failure.getOneUser});
-  //     next(e);
-  //   }
-  // }
+
+  async getSelf(req: Request, res: Response, next: NextFunction) {
+    try {
+      const {user} = req;
+      res.json({message: userFriendlyMessage.success.getOneUser, data: user});
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getOneUser});
+      next(e);
+    }
+  }
 
   // async updateSelf(req: Request, res: Response, next: NextFunction) {
   //   try {
