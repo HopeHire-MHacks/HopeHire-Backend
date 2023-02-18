@@ -5,11 +5,23 @@ import {
   EmployerAttributes,
   EmployerCreationAttributes,
 } from '../models/Employer';
+import UserService from '../services/UserService';
+import {MultipleRoleCreationError} from '../models/User';
+import JobService from '../services/JobService';
 
 export default class EmployerController {
   private employerService: EmployerService;
-  constructor(employerService: EmployerService) {
+  private jobService: JobService;
+  private userService: UserService;
+
+  constructor(
+    employerService: EmployerService,
+    jobService: JobService,
+    userService: UserService
+  ) {
     this.employerService = employerService;
+    this.jobService = jobService;
+    this.userService = userService;
   }
   async getAllEmployers(req: Request, res: Response, next: NextFunction) {
     try {
@@ -46,6 +58,12 @@ export default class EmployerController {
         userId: req.user.id,
         ...req.body,
       };
+
+      const user = await this.userService.getActableById(req.user.id);
+      if (user.employee || user.employer) {
+        throw new MultipleRoleCreationError();
+      }
+
       const createdEmployer = await this.employerService.createOneEmployer(
         toCreate
       );
@@ -56,6 +74,10 @@ export default class EmployerController {
       });
     } catch (e) {
       res.status(400);
+      if (e instanceof MultipleRoleCreationError) {
+        res.json({message: e.message});
+        return;
+      }
       res.json({message: userFriendlyMessage.failure.createEmployer});
       next(e);
     }

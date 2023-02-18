@@ -122,6 +122,7 @@ export default {
     resetPassword: 'Error in resetting password.',
     signUpAttributes: 'Error in getting sign up attributes.',
     samePasswordError: 'New password and old password cannot be the same',
+    multipleRoleCreation: 'Cannot create multiple roles for the same user',
 
     invalidPassword:
       'Password must at least be 6 characters long with at least 1 special character (@ $ ! % * # ? &).',

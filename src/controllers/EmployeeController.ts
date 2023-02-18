@@ -8,17 +8,22 @@ import {
 import enviroment from '../consts/enviroment';
 import axios from 'axios';
 import ApplicationService from '../services/ApplicationService';
+import UserService from '../services/UserService';
+import {MultipleRoleCreationError} from '../models/User';
 
 export default class EmployeeController {
   private employeeService: EmployeeService;
   private applicationService: ApplicationService;
+  private userService: UserService;
 
   constructor(
     employeeService: EmployeeService,
-    applicationService: ApplicationService
+    applicationService: ApplicationService,
+    userService: UserService
   ) {
     this.employeeService = employeeService;
     this.applicationService = applicationService;
+    this.userService = userService;
   }
   async getAllEmployees(req: Request, res: Response, next: NextFunction) {
     try {
@@ -103,6 +108,12 @@ export default class EmployeeController {
         userId: req.user.id,
         ...req.body,
       };
+
+      const user = await this.userService.getActableById(req.user.id);
+      if (user.employee || user.employer) {
+        throw new MultipleRoleCreationError();
+      }
+
       const createdEmployee = await this.employeeService.createOneEmployee(
         toCreate
       );
@@ -113,6 +124,10 @@ export default class EmployeeController {
       });
     } catch (e) {
       res.status(400);
+      if (e instanceof MultipleRoleCreationError) {
+        res.json({message: e.message});
+        return;
+      }
       res.json({message: userFriendlyMessage.failure.createEmployee});
       next(e);
     }
