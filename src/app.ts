@@ -70,7 +70,7 @@ export default class App {
     this.app.use('/employers', EmployerRouter());
     this.app.use('/employees', EmployeeRouter());
     this.app.use('/jobs', JobRouter());
-    this.app.use('/auth', AuthenticationRoutes());
+    this.app.use('/', AuthenticationRoutes());
   }
 
   public async initContainer() {
