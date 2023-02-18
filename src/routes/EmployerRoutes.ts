@@ -44,6 +44,12 @@ export default () => {
     [auth],
     employerController.deleteOneEmployerById.bind(employerController)
   );
+  
+  employerRouter.get(
+    '/:id/jobs',
+    [auth],
+    employerController.getJobsByEmployerId.bind(employerController)
+  );
 
   return employerRouter;
 };

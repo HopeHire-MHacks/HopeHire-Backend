@@ -120,4 +120,19 @@ export default class EmployerController {
       next(e);
     }
   }
+
+  async getJobsByEmployerId(req: Request, res: Response, next: NextFunction) {
+    try {
+      const employerId = parseInt(req.params.id);
+      const jobs = await this.jobService.getJobsByEmployerId(employerId);
+      res.json({
+        message: userFriendlyMessage.success.getJobsByEmployerId,
+        data: jobs,
+      });
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getJobsByEmployerId});
+      next(e);
+    }
+  }
 }
