@@ -28,6 +28,12 @@ module.exports = {
           key: 'id',
         },
       },
+      numberOfEmployees: {
+        type: Sequelize.INTEGER,
+      },
+      latLong: {
+        type: Sequelize.ARRAY(Sequelize.FLOAT),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

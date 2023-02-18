@@ -9,6 +9,8 @@ export interface EmployerAttributes {
   logo: Blob;
   address: string;
   userId: number;
+  numberOfEmployees: number;
+  latLong: number[];
 }
 
 export type EmployerCreationAttributes = Optional<EmployerAttributes, 'id'>;
@@ -20,6 +22,8 @@ class Employer extends Model {
   public logo!: Blob;
   public address!: string;
   public userId!: number;
+  public numberOfEmployees!: number;
+  public latLong!: number[];
 
   // timestamps!
   public readonly createdAt!: Date;
@@ -55,6 +59,12 @@ class Employer extends Model {
         address: {
           type: new DataTypes.TEXT(),
           allowNull: false,
+        },
+        numberOfEmployees: {
+          type: DataTypes.INTEGER,
+        },
+        latLong: {
+          type: DataTypes.ARRAY(DataTypes.FLOAT),
         },
       },
       {
