@@ -38,6 +38,12 @@ export default {
     updateApplication: 'Successfully updated Application.',
     deleteApplication: 'Successfully deleted Application(s).',
 
+    getOneInteraction: 'Successfully retrieved Interaction.',
+    getAllInteractions: 'Successfully retrieved Interactions.',
+    createInteraction: 'Successfully created Interaction(s).',
+    updateInteraction: 'Successfully updated Interaction.',
+    deleteInteraction: 'Successfully deleted Interaction(s).',
+
     signIn: 'Successfully signed in.',
     setPassword: 'Successfully set password',
     resetPassword: 'Successfully reset password.',
@@ -85,6 +91,13 @@ export default {
     updateApplication: 'Error in updating Application.',
     deleteApplication: 'Error in deleting Application(s).',
     applicationNotExist: 'Application does not exist.',
+
+    getOneInteraction: 'Error in retrieving Interaction.',
+    getAllInteractions: 'Error in retrieving Interactions.',
+    createInteraction: 'Error in creating Interaction(s).',
+    updateInteraction: 'Error in updating Interaction.',
+    deleteInteraction: 'Error in deleting Interaction(s).',
+    interactionNotExist: 'Interaction does not exist.',
 
     emailExists: 'Email already exists.',
     noAuthToken: 'Authorization token not found',

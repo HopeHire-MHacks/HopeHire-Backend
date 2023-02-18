@@ -33,6 +33,11 @@ import ApplicationService from './services/ApplicationService';
 import ApplicationController from './controllers/ApplicationController';
 import ApplicationRouter from './routes/ApplicationRoutes';
 
+import InteractionRepository from './repositories/InteractionRepository';
+import InteractionService from './services/InteractionService';
+import InteractionController from './controllers/InteractionController';
+import InteractionRouter from './routes/InteractionRoutes';
+
 import AuthenticationController from './controllers/AuthenticationController';
 import AuthenticationRoutes from './routes/AuthenticationRoutes';
 import AuthenticationMiddleware from './middlewares/authentication';
@@ -85,7 +90,7 @@ export default class App {
     this.app.use('/jobs', JobRouter());
     this.app.use('/bookmarks', BookmarkRouter());
     this.app.use('/applications', ApplicationRouter());
-
+    this.app.use('/interactions', InteractionRouter());
     this.app.use('/', AuthenticationRoutes());
   }
 
@@ -101,6 +106,7 @@ export default class App {
     container.register('BookmarkRepository', BookmarkRepository, ['db']);
     container.register('ExperienceRepository', ExperienceRepository, ['db']);
     container.register('ApplicationRepository', ApplicationRepository, ['db']);
+    container.register('InteractionRepository', InteractionRepository, ['db']);
 
     // Services
     container.register('UserService', UserService, ['UserRepository']);
@@ -119,6 +125,9 @@ export default class App {
     ]);
     container.register('ApplicationService', ApplicationService, [
       'ApplicationRepository',
+    ]);
+    container.register('InteractionService', InteractionService, [
+      'InteractionRepository',
     ]);
 
     // Controllers
@@ -143,6 +152,9 @@ export default class App {
     ]);
     container.register('ApplicationController', ApplicationController, [
       'ApplicationService',
+    ]);
+    container.register('InteractionController', InteractionController, [
+      'InteractionService',
     ]);
 
     // Middlewares
