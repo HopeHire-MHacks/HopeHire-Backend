@@ -31,11 +31,8 @@ export default class JobController {
 
   async getAllJobsRecommended(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log(
-        enviroment.recommendationAPI + '/patients/' + req.body.employee_id
-      );
       const response = await axios.get(
-        'http://localhost:5000/patients/' + req.body.employee_id
+        enviroment.recommendationAPI + '/patients/' + req.body.employee_id
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const job_ids: any = response.data['listing_ids'];
