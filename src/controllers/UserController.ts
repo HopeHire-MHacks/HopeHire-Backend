@@ -11,7 +11,11 @@ export default class UserController {
   async getSelf(req: Request, res: Response, next: NextFunction) {
     try {
       const {user} = req;
-      res.json({message: userFriendlyMessage.success.getOneUser, data: user});
+      const userInfo = await this.userService.getActableById(user.id);
+      res.json({
+        message: userFriendlyMessage.success.getOneUser,
+        data: userInfo,
+      });
     } catch (e) {
       res.status(400);
       res.json({message: userFriendlyMessage.failure.getOneUser});
