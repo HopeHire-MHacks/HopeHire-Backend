@@ -13,7 +13,9 @@ export default class ApplicationService {
   }
 
   async getAllApplications() {
-    return this.applicationRepository.getAll() as unknown as Application[];
+    return this.applicationRepository.getEagerLoadedWithFilters(
+      {}
+    ) as unknown as Application[];
   }
 
   async getOneApplicationById(id: number) {
@@ -29,13 +31,13 @@ export default class ApplicationService {
   }
 
   async getApplicationsByEmployeeId(employeeId: number) {
-    return (await this.applicationRepository.getWithFilters({
+    return (await this.applicationRepository.getEagerLoadedWithFilters({
       employeeId,
     })) as Application[];
   }
 
   async getApplicationsByJobId(jobId: number) {
-    return (await this.applicationRepository.getWithFilters({
+    return (await this.applicationRepository.getEagerLoadedWithFilters({
       jobId,
     })) as Application[];
   }
