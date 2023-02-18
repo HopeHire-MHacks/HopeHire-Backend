@@ -10,15 +10,21 @@ export default class JobService {
   }
 
   async getAllJobs() {
-    return this.jobRepository.getAll() as unknown as Job[];
+    return this.jobRepository.getWithFiltersJoinedEmployer(
+      {}
+    ) as unknown as Job[];
   }
 
   async getOneJobById(id: number) {
-    return (await this.jobRepository.getWithFilters({id}))[0] as Job;
+    return (
+      await this.jobRepository.getWithFiltersJoinedEmployer({id})
+    )[0] as Job;
   }
 
   async getJobsByEmployerId(employerId: number) {
-    return this.jobRepository.getWithFilters({employerId}) as unknown as Job[];
+    return this.jobRepository.getWithFiltersJoinedEmployer({
+      employerId,
+    }) as unknown as Job[];
   }
 
   async createOneJob(job: JobCreationAttributes) {
