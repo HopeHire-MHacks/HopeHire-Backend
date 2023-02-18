@@ -2,7 +2,7 @@ import {Model, DataTypes, Optional, Sequelize} from 'sequelize';
 import bcrypt from 'bcrypt';
 import enviroment from '../consts/enviroment';
 import userFriendlyMessages from '../consts/userFriendlyMessages';
-// import {Models} from '../types';
+import {Models} from '../types';
 
 export type Role = 'Student' | 'Teacher' | 'Admin';
 
@@ -142,7 +142,15 @@ class User
   }
 
   // Use this method to create foreign key restraints
-  // public static associate(models: Models) {}
+  public static associate(models: Models) {
+    User.hasOne(models.Employee, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        name: 'userId',
+        allowNull: false,
+      },
+    });
+  }
 }
 
 export default User;

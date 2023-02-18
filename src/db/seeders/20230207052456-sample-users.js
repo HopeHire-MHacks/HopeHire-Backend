@@ -17,6 +17,12 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        email: 'ryantan@gmail.com',
+        password: hashPassword('asdasd'),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
 
