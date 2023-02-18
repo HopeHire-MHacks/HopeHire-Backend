@@ -2,9 +2,12 @@ import {Model, DataTypes, Sequelize} from 'sequelize';
 import User from './User';
 import {Models} from '../types';
 
-class Employee extends Model {
-  public id!: number; // Note that the `null assertion` `!` is required in strict mode.
+class Employer extends Model {
+  public id!: number;
   public name!: string;
+  public companyDescription!: string;
+  public logo!: Blob;
+  public address!: string;
   public userId!: number;
 
   // timestamps!
@@ -12,7 +15,7 @@ class Employee extends Model {
   public readonly updatedAt!: Date;
 
   public static initModel(sequelize: Sequelize) {
-    Employee.init(
+    Employer.init(
       {
         id: {
           type: DataTypes.INTEGER.UNSIGNED,
@@ -30,21 +33,33 @@ class Employee extends Model {
             key: 'id',
           },
         },
+        companyDescription: {
+          type: new DataTypes.TEXT(),
+          allowNull: false,
+        },
+        logo: {
+          type: new DataTypes.BLOB(),
+          allowNull: true,
+        },
+        address: {
+          type: new DataTypes.TEXT(),
+          allowNull: false,
+        },
       },
       {
         sequelize,
-        modelName: 'Employee',
-        tableName: 'employees',
+        modelName: 'Employer',
+        tableName: 'employers',
       }
     );
   }
 
   public static associate(models: Models) {
-    Employee.belongsTo(models.User, {
+    Employer.belongsTo(models.User, {
       foreignKey: 'userId',
       as: 'user',
     });
   }
 }
 
-export default Employee;
+export default Employer;

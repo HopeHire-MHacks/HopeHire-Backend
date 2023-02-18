@@ -4,8 +4,6 @@ import enviroment from '../consts/enviroment';
 import userFriendlyMessages from '../consts/userFriendlyMessages';
 import {Models} from '../types';
 
-export type Role = 'Student' | 'Teacher' | 'Admin';
-
 // These are all the attributes in the User model
 export interface UserAttributes {
   id: number;
@@ -16,7 +14,6 @@ export interface UserAttributes {
 // Attributes for parsing CSV when doing bulk sign up
 export interface BulkSignUpAttributes {
   email: string;
-  role: Role;
   class?: number;
 }
 
@@ -149,6 +146,15 @@ class User
         name: 'userId',
         allowNull: false,
       },
+      as: 'employee',
+    });
+    User.hasOne(models.Employer, {
+      onDelete: 'CASCADE',
+      foreignKey: {
+        name: 'userId',
+        allowNull: false,
+      },
+      as: 'employer',
     });
   }
 }
