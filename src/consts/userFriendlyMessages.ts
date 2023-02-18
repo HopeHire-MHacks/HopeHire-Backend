@@ -2,17 +2,22 @@ export default {
   success: {
     getOneUser: 'Successfully retrieved User.',
     getAllUsers: 'Successfully retrieved Users.',
-    createUser:
-      "Successfully created User(s). Please check your email's inbox (and junk folder) for a confirmation link before signing in.",
+    createUser: 'Successfully created User.',
     updateUser: 'Successfully updated User.',
     deleteUser: 'Successfully deleted User(s).',
 
     getOneEmployer: 'Successfully retrieved Employer.',
     getAllEmployers: 'Successfully retrieved Employers.',
-    createEmployer:
-      "Successfully created Employer(s). Please check your email's inbox (and junk folder) for a confirmation link before signing in.",
+    createEmployer: 'Successfully created Employer(s).',
     updateEmployer: 'Successfully updated Employer.',
     deleteEmployer: 'Successfully deleted Employer(s).',
+
+    getOneEmployee: 'Successfully retrieved Employee.',
+    getMultipleEmployees: 'Successfully retrieved Employee(s).',
+    getAllEmployees: 'Successfully retrieved Employees.',
+    createEmployee: 'Successfully created Employee(s).',
+    updateEmployee: 'Successfully updated Employee.',
+    deleteEmployee: 'Successfully deleted Employee(s).',
 
     signIn: 'Successfully signed in.',
     setPassword: 'Successfully set password',
@@ -32,6 +37,13 @@ export default {
     updateEmployer: 'Error in updating Employer.',
     deleteEmployer: 'Error in deleting Employer(s).',
     employerNotExist: 'Employer does not exist.',
+
+    getOneEmployee: 'Successfully retrieved Employee.',
+    getMultipleEmployees: 'Successfully retrieved Employee(s).',
+    getAllEmployees: 'Successfully retrieved Employees.',
+    createEmployee: 'Successfully created Employee(s).',
+    updateEmployee: 'Successfully updated Employee.',
+    deleteEmployee: 'Successfully deleted Employee(s).',
 
     emailExists: 'Email already exists.',
     noAuthToken: 'Authorization token not found',
