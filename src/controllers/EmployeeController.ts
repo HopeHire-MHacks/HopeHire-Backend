@@ -64,6 +64,7 @@ export default class EmployeeController {
   async createOneEmployee(req: Request, res: Response, next: NextFunction) {
     try {
       const toCreate: EmployeeCreationAttributes = {
+        userId: req.user.id,
         ...req.body,
       };
       const createdEmployee = await this.employeeService.createOneEmployee(

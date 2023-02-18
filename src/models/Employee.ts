@@ -19,7 +19,10 @@ export interface EmployeeAttributes {
   resume: Blob;
 }
 
-export type EmployeeCreationAttributes = Optional<EmployeeAttributes, 'id'>;
+export type EmployeeCreationAttributes = Optional<
+  EmployeeAttributes,
+  'id' | 'userId'
+>;
 
 class Employee extends Model {
   public id!: number;

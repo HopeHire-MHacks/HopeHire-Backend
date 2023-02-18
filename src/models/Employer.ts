@@ -13,7 +13,10 @@ export interface EmployerAttributes {
   latLong: number[];
 }
 
-export type EmployerCreationAttributes = Optional<EmployerAttributes, 'id'>;
+export type EmployerCreationAttributes = Optional<
+  EmployerAttributes,
+  'id' | 'userId'
+>;
 
 class Employer extends Model {
   public id!: number;
