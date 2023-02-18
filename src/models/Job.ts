@@ -10,7 +10,7 @@ export interface JobAttributes {
   jobDescription: string;
   jobRequirements: string;
   jobFlexibility: string;
-  address: number[];
+  latLong: number[];
   hasDialysisSupport: boolean;
   hasFlexibleSchedule: boolean;
   physicalDemands: string;
@@ -21,6 +21,11 @@ export interface JobAttributes {
   skills: number[];
   employerId: number;
   salaryRange: number[];
+  country: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  address: string;
 }
 
 export type JobCreationAttributes = Optional<JobAttributes, 'id'>;
@@ -33,7 +38,7 @@ class Job extends Model {
   public jobDescription!: string;
   public jobRequirements!: string;
   public jobFlexibility!: string;
-  public address!: number[];
+  public latLong!: number[];
   public hasDialysisSupport!: boolean;
   public hasFlexibleSchedule!: boolean;
   public physicalDemands!: string;
@@ -44,6 +49,11 @@ class Job extends Model {
   public isOpen!: boolean;
   public salaryRange!: number[];
   public skills!: number[];
+  public country!: string;
+  public city!: string;
+  public state!: string;
+  public postalCode!: string;
+  public address!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -62,7 +72,7 @@ class Job extends Model {
         jobDescription: DataTypes.TEXT,
         jobRequirements: DataTypes.TEXT,
         jobFlexibility: DataTypes.TEXT,
-        address: DataTypes.ARRAY(DataTypes.INTEGER),
+        latLong: DataTypes.ARRAY(DataTypes.FLOAT),
         hasDialysisSupport: DataTypes.BOOLEAN,
         hasFlexibleSchedule: DataTypes.BOOLEAN,
         physicalDemands: DataTypes.TEXT,
@@ -72,6 +82,11 @@ class Job extends Model {
         isOpen: DataTypes.BOOLEAN,
         skills: DataTypes.ARRAY(DataTypes.INTEGER),
         salaryRange: DataTypes.ARRAY(DataTypes.INTEGER),
+        country: DataTypes.TEXT,
+        city: DataTypes.TEXT,
+        state: DataTypes.TEXT,
+        postalCode: DataTypes.TEXT,
+        address: DataTypes.TEXT,
         employerId: {
           type: DataTypes.INTEGER,
           references: {

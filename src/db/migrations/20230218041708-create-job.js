@@ -27,8 +27,8 @@ module.exports = {
       jobFlexibility: {
         type: Sequelize.TEXT,
       },
-      address: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER),
+      latLong: {
+        type: Sequelize.ARRAY(Sequelize.FLOAT),
       },
       hasDialysisSupport: {
         type: Sequelize.BOOLEAN,
@@ -56,6 +56,21 @@ module.exports = {
       },
       skills: {
         type: Sequelize.ARRAY(Sequelize.INTEGER),
+      },
+      country: {
+        type: Sequelize.TEXT,
+      },
+      state: {
+        type: Sequelize.TEXT,
+      },
+      city: {
+        type: Sequelize.TEXT,
+      },
+      postalCode: {
+        type: Sequelize.TEXT,
+      },
+      address: {
+        type: Sequelize.TEXT,
       },
       employerId: {
         type: Sequelize.INTEGER,
