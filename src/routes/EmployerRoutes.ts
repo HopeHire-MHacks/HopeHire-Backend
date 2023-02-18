@@ -28,6 +28,12 @@ export default () => {
   );
 
   employerRouter.get(
+    '/:id/jobs',
+    [auth],
+    employerController.getJobsByEmployerId.bind(employerController)
+  );
+
+  employerRouter.get(
     '/:id',
     [auth],
     employerController.getOneEmployerById.bind(employerController)
