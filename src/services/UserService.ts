@@ -1,6 +1,8 @@
 import {UserAttributes, UserCreationAttributes} from '../models/User';
 import UserRepository from '../repositories/UserRepository';
 import User from '../models/User';
+import Employee from '../models/Employee';
+import Employer from '../models/Employer';
 
 export default class UserService {
   private userRepository: UserRepository;
@@ -47,5 +49,19 @@ export default class UserService {
 
   async deleteOneUserById(id: number) {
     return this.userRepository.deleteOne({id});
+  }
+
+  async getActableById(id: number) {
+    return (
+      await this.userRepository.getJoinWithFilter(
+        {id},
+        {
+          include: [
+            {model: Employee, as: 'employee'},
+            {model: Employer, as: 'employer'},
+          ],
+        }
+      )
+    )[0] as User;
   }
 }

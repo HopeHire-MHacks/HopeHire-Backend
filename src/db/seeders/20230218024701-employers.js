@@ -19,7 +19,6 @@ function readFile() {
 module.exports = {
   up: async queryInterface => {
     images.push(await readFile());
-    console.log(images[0]);
     return await queryInterface.bulkInsert('employers', [
       {
         name: 'Hudson River Trading',
