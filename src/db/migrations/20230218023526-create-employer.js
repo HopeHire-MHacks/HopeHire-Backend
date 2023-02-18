@@ -34,6 +34,21 @@ module.exports = {
       latLong: {
         type: Sequelize.ARRAY(Sequelize.FLOAT),
       },
+      country: {
+        type: Sequelize.STRING,
+      },
+      city: {
+        type: Sequelize.STRING,
+      },
+      state: {
+        type: Sequelize.STRING,
+      },
+      postalCode: {
+        type: Sequelize.STRING,
+      },
+      webAddress: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

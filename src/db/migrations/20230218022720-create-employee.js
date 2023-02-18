@@ -52,6 +52,24 @@ module.exports = {
       resume: {
         type: Sequelize.BLOB,
       },
+      country: {
+        type: Sequelize.STRING,
+      },
+      city: {
+        type: Sequelize.STRING,
+      },
+      state: {
+        type: Sequelize.STRING,
+      },
+      postalCode: {
+        type: Sequelize.STRING,
+      },
+      address: {
+        type: Sequelize.TEXT,
+      },
+      latLong: {
+        type: Sequelize.ARRAY(Sequelize.FLOAT),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

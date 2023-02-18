@@ -26,10 +26,14 @@ module.exports = {
         companyDescription:
           'Hudson River Trading is a quantitative trading firm headquartered in New York City and founded in 2002.',
         logo: images[0],
-        address:
-          '10 Collyer Quay, #06-07 Ocean Financial Centre, Singapore 049315',
+        webAddress: 'https://www.google.com/',
         latLong: [1.2833, 103.85],
         numberOfEmployees: 100,
+        country: 'USA',
+        city: 'New York',
+        state: 'NY',
+        postalCode: '10001',
+        address: '123 Main St',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -39,9 +43,14 @@ module.exports = {
         companyDescription:
           'Acme Trading Co. is a leading trading firm specializing in high-frequency trading.',
         logo: images[1],
-        address: '20 Raffles Place, #15-02, Singapore 048616',
+        webAddress: 'https://www.amazon.com/',
         latLong: [2.283, 103.85],
         numberOfEmployees: 90,
+        country: 'Australia',
+        city: 'Sydney',
+        state: 'NSW',
+        postalCode: '2000',
+        address: '111 George St',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -51,8 +60,13 @@ module.exports = {
         companyDescription:
           'Quantum Trading LLC is a quantitative trading firm that uses cutting-edge technology and data analysis to make informed trading decisions.',
         logo: images[2],
-        address: '30 Cecil Street, #17-08 Prudential Tower, Singapore 049712',
+        webAddress: 'https://www.nike.com/',
         latLong: [2.2833, 103.85],
+        country: 'UK',
+        city: 'London',
+        state: '',
+        postalCode: 'WC1E 6BT',
+        address: '789 Oxford St',
         numberOfEmployees: 80,
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -63,10 +77,14 @@ module.exports = {
         companyDescription:
           'High Frequency Trading Inc. is a global trading firm with a focus on high-frequency and algorithmic trading.',
         logo: images[3],
-        address:
-          '1 Raffles Place, #44-02 One Raffles Place Tower 2, Singapore 048616',
+        webAddress: 'https://www.microsoft.com/',
         latLong: [5.4833, 103.85],
         numberOfEmployees: 70,
+        country: 'Canada',
+        city: 'Toronto',
+        state: 'ON',
+        postalCode: 'M5V 2T6',
+        address: '456 Bay St',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -77,3 +95,31 @@ module.exports = {
     return await queryInterface.bulkDelete('employers', null, {});
   },
 };
+
+[
+  {
+    country: 'USA',
+    city: 'New York',
+    state: 'NY',
+    postalCode: '10001',
+    address: '123 Main St',
+    latLong: [40.7128, -74.006],
+  },
+  {
+    latLong: [43.6532, -79.3832],
+  },
+  {
+    latLong: [51.5074, -0.1278],
+  },
+  {
+    latLong: [-33.8651, 151.2099],
+  },
+  {
+    country: 'France',
+    city: 'Paris',
+    state: '',
+    postalCode: '75001',
+    address: '222 Rue de Rivoli',
+    latLong: [48.8566, 2.3522],
+  },
+];

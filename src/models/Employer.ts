@@ -11,6 +11,11 @@ export interface EmployerAttributes {
   userId: number;
   numberOfEmployees: number;
   latLong: number[];
+  country: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  webAddress: string;
 }
 
 export type EmployerCreationAttributes = Optional<
@@ -27,6 +32,11 @@ class Employer extends Model {
   public userId!: number;
   public numberOfEmployees!: number;
   public latLong!: number[];
+  public country!: string;
+  public city!: string;
+  public state!: string;
+  public postalCode!: string;
+  public webAddress!: string;
 
   // timestamps!
   public readonly createdAt!: Date;
@@ -68,6 +78,26 @@ class Employer extends Model {
         },
         latLong: {
           type: DataTypes.ARRAY(DataTypes.FLOAT),
+        },
+        country: {
+          type: new DataTypes.STRING(128),
+          allowNull: false,
+        },
+        city: {
+          type: new DataTypes.STRING(128),
+          allowNull: false,
+        },
+        state: {
+          type: new DataTypes.STRING(128),
+          allowNull: false,
+        },
+        postalCode: {
+          type: new DataTypes.STRING(128),
+          allowNull: false,
+        },
+        webAddress: {
+          type: new DataTypes.STRING(128),
+          allowNull: false,
         },
       },
       {

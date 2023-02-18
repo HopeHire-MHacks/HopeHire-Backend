@@ -17,6 +17,12 @@ export interface EmployeeAttributes {
   dialysisFrequency: number;
   profilePicture: Blob;
   resume: Blob;
+  country: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  address: string;
+  latLong: number[];
 }
 
 export type EmployeeCreationAttributes = Optional<
@@ -39,6 +45,12 @@ class Employee extends Model {
   public dialysisFrequency!: number;
   public profilePicture!: Blob;
   public resume!: Blob;
+  public country!: string;
+  public city!: string;
+  public state!: string;
+  public postalCode!: string;
+  public address!: string;
+  public latLong!: number[];
 
   // timestamps!
   public readonly createdAt!: Date;
@@ -76,6 +88,12 @@ class Employee extends Model {
         dialysisFrequency: DataTypes.INTEGER,
         profilePicture: DataTypes.BLOB,
         resume: DataTypes.BLOB,
+        country: DataTypes.STRING,
+        city: DataTypes.STRING,
+        state: DataTypes.STRING,
+        postalCode: DataTypes.STRING,
+        address: DataTypes.STRING,
+        latLong: DataTypes.ARRAY(DataTypes.FLOAT),
       },
       {
         sequelize,
