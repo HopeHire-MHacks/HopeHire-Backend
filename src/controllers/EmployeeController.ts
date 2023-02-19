@@ -61,7 +61,7 @@ export default class EmployeeController {
   ) {
     try {
       const response = await axios.get(
-        enviroment.recommendationAPI + '/employers/' + req.body.employer_id
+        enviroment.recommendationAPI + '/employers/' + req.params.id
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const employee_ids: any = response.data['patient_ids'];
@@ -84,7 +84,7 @@ export default class EmployeeController {
   async getAllJobsRecommended(req: Request, res: Response, next: NextFunction) {
     try {
       const response = await axios.get(
-        enviroment.recommendationAPI + '/jobs/' + req.body.job_id
+        enviroment.recommendationAPI + '/jobs/' + req.params.id
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const employee_ids: any = response.data['patient_ids'];

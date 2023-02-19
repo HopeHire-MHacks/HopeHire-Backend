@@ -58,13 +58,13 @@ export default () => {
   );
 
   employeeRouter.get(
-    '/recommended/employers',
+    '/recommended/employers/:id',
     [auth],
     employeeController.getAllEmployeesRecommended.bind(employeeController)
   );
 
   employeeRouter.get(
-    '/recommended/jobs',
+    '/recommended/jobs/:id',
     [auth],
     employeeController.getAllJobsRecommended.bind(employeeController)
   );

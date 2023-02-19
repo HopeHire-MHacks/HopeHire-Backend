@@ -56,7 +56,7 @@ export default () => {
   );
 
   jobRouter.get(
-    '/recommended/employees',
+    '/recommended/employees/:id',
     [auth],
     jobController.getAllJobsRecommended.bind(jobController)
   );
