@@ -15,8 +15,8 @@ export interface EmployeeAttributes {
   availableTimes: number[];
   preferredLocation: number[];
   dialysisFrequency: number;
-  profilePicture: Blob;
-  resume: Blob;
+  profilePicture: Buffer;
+  resume: Buffer;
   country: string;
   city: string;
   state: string;
@@ -43,8 +43,8 @@ class Employee extends Model {
   public availableTimes!: number[];
   public preferredLocation!: number[];
   public dialysisFrequency!: number;
-  public profilePicture!: Blob;
-  public resume!: Blob;
+  public profilePicture!: Buffer;
+  public resume!: Buffer;
   public country!: string;
   public city!: string;
   public state!: string;

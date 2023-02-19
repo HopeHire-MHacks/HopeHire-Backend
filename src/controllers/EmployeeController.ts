@@ -126,6 +126,14 @@ export default class EmployeeController {
   }
 
   async createOneEmployee(req: Request, res: Response, next: NextFunction) {
+    if (req.body.profilePicture !== null) {
+      req.body.profilePicture = Buffer.from(req.body.profilePicture.data);
+    }
+
+    if (req.body.resume !== null) {
+      req.body.resume = Buffer.from(req.body.resume.data);
+    }
+
     try {
       const toCreate: EmployeeCreationAttributes = {
         userId: req.user.id,

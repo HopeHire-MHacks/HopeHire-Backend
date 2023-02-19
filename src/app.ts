@@ -55,8 +55,8 @@ export default class App {
   }
 
   public initMiddlewares() {
-    this.app.use(express.json({limit: '5mb'}));
-    this.app.use(express.urlencoded({limit: '5mb', extended: true}));
+    this.app.use(express.json({limit: '50mb'}));
+    this.app.use(express.urlencoded({limit: '50mb', extended: true}));
     this.app.use((req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header(
