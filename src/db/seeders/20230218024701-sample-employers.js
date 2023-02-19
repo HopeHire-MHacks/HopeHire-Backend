@@ -4,9 +4,17 @@ const fs = require('fs');
 
 const images = [];
 
-function readFile() {
+const links = ['HRT.jpg', 'Apple.png', 'Quantum.jpg', 'Acme.png'];
+
+async function loadImages() {
+  for (let i = 0; i < links.length; i++) {
+    images.push(await readFile(links[i]));
+  }
+}
+
+function readFile(name) {
   return new Promise((resolve, reject) => {
-    fs.readFile('assets/sample_images/HRT.jpg', (err, data) => {
+    fs.readFile('assets/sample_images/' + name, (err, data) => {
       if (err) {
         reject(err);
       } else {
@@ -18,7 +26,7 @@ function readFile() {
 
 module.exports = {
   up: async queryInterface => {
-    images.push(await readFile());
+    await loadImages();
     return await queryInterface.bulkInsert('employers', [
       {
         name: 'Hudson River Trading',
@@ -38,19 +46,19 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        name: 'Acme Trading Co.',
+        name: 'Apple Inc.',
         userId: 1,
         companyDescription:
-          'Acme Trading Co. is a leading trading firm specializing in high-frequency trading.',
+          'Apple Inc. is a multinational technology company that designs, develops, and sells consumer electronics, computer software, and online services.',
         logo: images[1],
-        webAddress: 'https://www.amazon.com/',
-        latLong: [2.283, 103.85],
-        numberOfEmployees: 90,
-        country: 'Australia',
-        city: 'Sydney',
-        state: 'NSW',
-        postalCode: '2000',
-        address: '111 George St',
+        webAddress: 'https://www.apple.com/',
+        latLong: [37.3318, -122.0312],
+        numberOfEmployees: 147000,
+        country: 'United States',
+        city: 'Cupertino',
+        state: 'California',
+        postalCode: '95014',
+        address: '1 Apple Park Way',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
