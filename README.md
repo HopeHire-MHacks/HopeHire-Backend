@@ -1,8 +1,10 @@
 # HopeHire Backend
 
-_Application Description_
+HopeHire is a job portal that's specifically designed with the health and physical conditions of kidney patients in mind. Our recommendation AI serves potential job opportunities that match their skillset, experience, and their health needs.
 
-## Inital setup
+This repository contains the backend code for HopeHire. We built this backend using Express, PostgreSQL for the database, and Sequelize as the ORM. The code is organized into modules, making it easy to maintain and add new features.
+
+## Getting Started
 
 **Prerequisites NodeJS LTS v18.14.0**
 
@@ -18,9 +20,10 @@ _Application Description_
 
 ## Documentation
 
-- [**Production Link**]()
-- [**Documentation Link**]()
+- [**Production Link**](https://hopehire-backend.herokuapp.com/)
 - [**Entity Relation Diagram**](https://drawsql.app/teams/santosh-2/diagrams/hopehire)
+
+## Contributing
 
 ### File Structure and Naming Convention
 
