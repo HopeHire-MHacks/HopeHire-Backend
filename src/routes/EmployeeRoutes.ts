@@ -63,5 +63,17 @@ export default () => {
     employeeController.getAllEmployeesRecommended.bind(employeeController)
   );
 
+  employeeRouter.get(
+    '/recommended/jobs',
+    [auth],
+    employeeController.getAllJobsRecommended.bind(employeeController)
+  );
+
+  employeeRouter.get(
+    '/count/total',
+    [auth],
+    employeeController.getCount.bind(employeeController)
+  );
+
   return employeeRouter;
 };

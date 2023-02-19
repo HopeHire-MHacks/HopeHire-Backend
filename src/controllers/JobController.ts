@@ -169,4 +169,15 @@ export default class JobController {
       next(e);
     }
   }
+
+  async getCount(req: Request, res: Response, next: NextFunction) {
+    try {
+      const count = await this.jobService.getCount();
+      res.json({count: count})
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getAllJobs});
+      next(e);
+    }
+  }
 }

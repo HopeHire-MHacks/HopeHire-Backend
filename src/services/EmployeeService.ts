@@ -12,6 +12,10 @@ export default class EmployeeService {
     this.employeeRepository = employeeRepository;
   }
 
+  async getCount() {
+    return this.employeeRepository.getCount();
+  }
+
   async getAllEmployees() {
     return this.employeeRepository.getAll() as unknown as Employee[];
   }

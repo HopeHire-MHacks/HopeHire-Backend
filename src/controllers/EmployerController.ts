@@ -139,4 +139,16 @@ export default class EmployerController {
       next(e);
     }
   }
+
+  async getCount(req: Request, res: Response, next: NextFunction) {
+    try {
+      console.log(this.employerService);
+      const count = await this.employerService.getCount();
+      res.json({count: count});
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getAllEmployers});
+      next(e);
+    }
+  }
 }

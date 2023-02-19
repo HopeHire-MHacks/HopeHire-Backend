@@ -57,5 +57,11 @@ export default () => {
     employerController.getJobsByEmployerId.bind(employerController)
   );
 
+  employerRouter.get(
+    '/count/total',
+    [auth],
+    employerController.getCount.bind(employerController)
+  );
+
   return employerRouter;
 };

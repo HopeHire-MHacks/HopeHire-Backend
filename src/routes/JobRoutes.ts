@@ -61,5 +61,11 @@ export default () => {
     jobController.getAllJobsRecommended.bind(jobController)
   );
 
+  jobRouter.get(
+    '/count/total',
+    [auth],
+    jobController.getCount.bind(jobController)
+  );
+
   return jobRouter;
 };

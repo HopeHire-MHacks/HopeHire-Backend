@@ -10,6 +10,10 @@ export default class JobService {
     this.jobRepository = jobRepository;
   }
 
+  async getCount() {
+    return this.jobRepository.getCount();
+  }
+
   async getAllJobs() {
     return this.jobRepository.getWithFiltersJoinedEmployer(
       {}

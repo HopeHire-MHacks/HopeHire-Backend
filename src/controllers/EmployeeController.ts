@@ -81,6 +81,29 @@ export default class EmployeeController {
     }
   }
 
+  async getAllJobsRecommended(req: Request, res: Response, next: NextFunction) {
+    try {
+      const response = await axios.get(
+        enviroment.recommendationAPI + '/jobs/' + req.body.job_id
+      );
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const employee_ids: any = response.data['patient_ids'];
+
+      const employees =
+        this.employeeService.getMultipleEmployeeById(employee_ids);
+      employees.then(data => {
+        res.json({
+          message: userFriendlyMessage.success.getAllJobs,
+          data: data,
+        });
+      });
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getAllJobs});
+      next(e);
+    }
+  }
+
   async getMultipleEmployeeById(
     req: Request,
     res: Response,
@@ -189,6 +212,17 @@ export default class EmployeeController {
     } catch (e) {
       res.status(400);
       res.json({message: userFriendlyMessage.failure.deleteEmployee});
+      next(e);
+    }
+  }
+
+  async getCount(req: Request, res: Response, next: NextFunction) {
+    try {
+      const count = await this.employeeService.getCount();
+      res.json({count: count});
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getAllEmployees});
       next(e);
     }
   }

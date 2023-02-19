@@ -22,6 +22,10 @@ export default class BaseRepository {
     this.model = model;
   }
 
+  async getCount() {
+    return this.model.count();
+  }
+
   async getAll(options?: TransactionOptions) {
     return this.model.findAll({...options});
   }

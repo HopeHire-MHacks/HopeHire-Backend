@@ -12,6 +12,10 @@ export default class EmployerService {
     this.employerRepository = employerRepository;
   }
 
+  async getCount() {
+    return this.employerRepository.getCount();
+  }
+
   async getAllEmployers() {
     return this.employerRepository.getAll() as unknown as Employer[];
   }
