@@ -20,6 +20,12 @@ export default () => {
   jobRouter.post('/', [auth], jobController.createOneJob.bind(jobController));
 
   jobRouter.get(
+    '/open',
+    [auth],
+    jobController.getAllOpenJobs.bind(jobController)
+  );
+
+  jobRouter.get(
     '/:id/applications',
     [auth],
     jobController.getApplicationsByJobId.bind(jobController)

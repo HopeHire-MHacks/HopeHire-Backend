@@ -29,6 +29,20 @@ export default class JobController {
     }
   }
 
+  async getAllOpenJobs(req: Request, res: Response, next: NextFunction) {
+    try {
+      const jobs = (await this.jobService.getAllOpenJobs()) || [];
+      res.json({
+        message: userFriendlyMessage.success.getAllJobs,
+        data: jobs,
+      });
+    } catch (e) {
+      res.status(400);
+      res.json({message: userFriendlyMessage.failure.getAllJobs});
+      next(e);
+    }
+  }
+
   async getAllJobsRecommended(req: Request, res: Response, next: NextFunction) {
     try {
       const response = await axios.get(

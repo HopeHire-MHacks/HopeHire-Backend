@@ -1,6 +1,7 @@
 import {JobAttributes, JobCreationAttributes} from '../models/Job';
 import JobRepository from '../repositories/JobRepository';
 import Job from '../models/Job';
+import {Op} from 'sequelize';
 
 export default class JobService {
   private jobRepository: JobRepository;
@@ -13,6 +14,15 @@ export default class JobService {
     return this.jobRepository.getWithFiltersJoinedEmployer(
       {}
     ) as unknown as Job[];
+  }
+
+  async getAllOpenJobs() {
+    return this.jobRepository.getWithFiltersJoinedEmployer({
+      isOpen: true,
+      openingTime: {
+        [Op.lt]: new Date(),
+      },
+    }) as unknown as Job[];
   }
 
   async getOneJobById(id: number) {
