@@ -1,4 +1,4 @@
-import express, { Application } from 'express';
+import express, {Application} from 'express';
 
 import UserController from './controllers/UserController';
 import UserRepository from './repositories/UserRepository';

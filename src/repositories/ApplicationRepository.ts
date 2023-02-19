@@ -1,6 +1,7 @@
 import {Sequelize} from 'sequelize/types';
 
 import Application from '../models/Application';
+import Employee from '../models/Employee';
 import Employer from '../models/Employer';
 import Job from '../models/Job';
 import {ModelStatic} from '../types';
@@ -18,14 +19,20 @@ export default class ApplicationRepository extends BaseRepository {
     return await this.getJoinWithFilter(
       filter,
       {
-        include: {
-          model: Job,
-          as: 'job',
-          include: {
-            model: Employer,
-            as: 'employer',
+        include: [
+          {
+            model: Job,
+            as: 'job',
+            include: {
+              model: Employer,
+              as: 'employer',
+            },
           },
-        },
+          {
+            model: Employee,
+            as: 'employee',
+          },
+        ],
       },
       options
     );
